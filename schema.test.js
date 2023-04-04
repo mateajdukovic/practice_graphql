@@ -22,7 +22,9 @@ describe("Test GraphQL Schema with Jest", () => {
       }
     `;
     const result = tester.graphql(query);
+    // expect no errors to be returned in the result
     expect(result.errors).toBeUndefined();
+    //  expects the books field to be present / defined
     expect(result.data.books).toBeDefined();
   });
 
@@ -36,9 +38,13 @@ describe("Test GraphQL Schema with Jest", () => {
       }
     `;
     const result = tester.graphql(query);
+    // expect no errors to be returned in the result
     expect(result.errors).toBeUndefined();
+    // expects the author field to be present / defined
     expect(result.data.author).toBeDefined();
+    // expects the returned author's id to be 1, as we queried for author with id 1
     expect(result.data.author.id).toEqual(1);
+    //  expects the name field to be present / defined
     expect(result.data.author.name).toBeDefined();
   });
 
@@ -53,6 +59,7 @@ describe("Test GraphQL Schema with Jest", () => {
       }
     `;
     const result = tester.graphql(query);
+    // expects errors to be returned in the result as there is no `nonExistentField` in the schema
     expect(result.errors).toBeDefined();
   });
 });
