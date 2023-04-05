@@ -48,7 +48,7 @@ describe("GraphQL API", () => {
     // Execute the mutation query
     cy.request({
       method: "POST",
-      url: "/graphql", // Replace with the path to your GraphQL server
+      url: "/graphql",
       body: { query: mutationQuery },
       headers: {
         "Content-Type": "application/json",
@@ -65,12 +65,7 @@ describe("GraphQL API", () => {
       expect(response.body.data.addBook).to.have.property("authorId", 1);
 
       // Validate the book was added to the data source
-      // const addedBook = books.find(
-      //   (book) => book.id === response.body.data.addBook.id
-      // );
-      // expect(addedBook).not.to.be.undefined;
-      // expect(addedBook.name).to.equal("The Test Book");
-      // expect(addedBook.authorId).to.equal(1);
+      // TODO with executing query
     });
   });
 });
